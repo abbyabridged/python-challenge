@@ -9,35 +9,29 @@ budget_csv = os.path.join("budget_data.csv")
 
 # Read in the CSV file
 with open(budget_csv, 'r') as csvfile:
-
+    
     # Split the data on commas
     csvreader = csv.reader(csvfile, delimiter=',')
 
-#Define the function and have it accept the 'budget_data' as its sole parameter
-def pybank(budget_data):
+#Set variables
 
-# Assign values to variables with descriptive names
-    #date_column = int(budget_data[0])
-    values_column = int(budget_data[0])
+total_months = int(budget_csv[1])
+total_months = 0
 
-    #-----------------------
+net_amount = int()
 
-    # Calculate total number of months included in the dataset
+for row in csvreader:
 
-    #total_months = profit_loss
+ # Calculate total number of months included in the dataset
 
-    total_months = sum (1 for row in csvreader)-1
+    total_months = int(total_months+1)
     print(total_months)
 
-    # Calculate net amount of profit/losses over the entire period
+ # Calculate net amount of profit/losses over the entire period
 
-    net_amount = sum(values_column)
-        
-    print(net_amount)
+    net_amount = int()
 
-    # Calculate average of the changes in profit/losses over the entire period
-
-
+     # Calculate average of the changes in profit/losses over the entire period
 
     # Calculate greatest increase in profits (date and amount) over the entire period
 
@@ -49,8 +43,7 @@ def pybank(budget_data):
     #print(f"{PercLost}% of matches lost")
     #print(f"{PercDraw}% of matches drawn")
 
-
-    print(pybank)
+    #print(pybank)
 
 # Export analysis to text file
 
