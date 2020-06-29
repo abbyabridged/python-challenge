@@ -26,8 +26,11 @@ with open(budget_csv,'r') as csvfile:
     # Count of total months
     total_months = 0
 
-    #Net profit/losses
+    # Net profit/losses
     profit_loss = 0
+
+    # Total change in profit/losses
+    total_change_pl = 0
 
 # Calculate total number of months included in the dataset
     for row in csvreader:
@@ -38,25 +41,27 @@ with open(budget_csv,'r') as csvfile:
 # Calculate net amount of profit/losses over the entire period
     #for row in csvreader:
         profit_loss = profit_loss+int(row[1])
-
+    
 #print(profit_loss)
     
 # Calculate average of the changes in profit/losses over the entire period
 
+    # Look at profit/loss column 
+    # Retrieve value in next row 
+    # Substract value in current row
+    # Add difference to the total_change_pl variable
 
+        #total_change_pl = int((row+1)[1])
+
+        total_change_pl = int(next(row[1]))
+
+print(total_change_pl)
 
 # Calculate greatest increase in profits (date and amount) over the entire period
 
 # Calculate the greatest decrease in losses (date and amount) over the entire period
 
-    # Print analysis to the terminal
-    #print(f"{values_column}")
-    #print(f"{PercWon}% of matches won")
-    #print(f"{PercLost}% of matches lost")
-    #print(f"{PercDraw}% of matches drawn")
-
-
-    #print(pybank)
+# Print analysis to the terminal
 
 # Export analysis to text file
 
