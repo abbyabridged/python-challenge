@@ -11,7 +11,7 @@ with open(election_csv,'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
 
     csv_header = next(csvfile)
-    print(f"CSV Header: {csv_header}")
+    # print(f"CSV Header: {csv_header}")
 #----------------------------------------------------------------------------------
 # Calculate the total number of votes cast
 
@@ -42,20 +42,32 @@ candidates_set = set(candidates_list)
 
 #----------------------------------------------------------------------------------
 # Calculate total number of votes each candidate won
+# and
+# Calculate percentage of votes each candidate won
+
+candidate_vote_count = {}
+for x in candidates_list:
+    if (x in candidate_vote_count):
+        candidate_vote_count[x] += 1
+    else:
+            candidate_vote_count[x] = 1
+for key,value in candidate_vote_count.items():
+        print(key,("{:.2f}".format((value/votes_count)*100)), value)
+        
+        #print("{:.2f}".format((value/votes_count)*100))
 
 # Create variables to hold number of votes for each candidate
-votes_khan = 0
-votes_correy = 0
-votes_li = 0
-votes_otooley = 0
+# votes_khan = 0
+# votes_correy = 0
+# votes_li = 0
+# votes_otooley = 0
 
-for x in candidates_list:
-    if candidates_list[x] == "Khan":
-        votes_khan + 1 
+# for x in candidates_list:
+#     if candidates_list[x] == "Khan":
+#         votes_khan + 1 
 
-print(votes_khan)
+# print(votes_khan)
 
-# Calculate percentage of votes each candidate won
 
 
 
