@@ -45,30 +45,64 @@ candidates_set = set(candidates_list)
 # and
 # Calculate percentage of votes each candidate won
 
+#  Create an empty dictionary to hold the count of votes for each candidate
 candidate_vote_count = {}
+# Loop through each entry in candidates list to count the frequency of each candidate (see method here: https://www.geeksforgeeks.org/counting-the-frequencies-in-a-list-using-dictionary-in-python/)
 for x in candidates_list:
     if (x in candidate_vote_count):
         candidate_vote_count[x] += 1
     else:
             candidate_vote_count[x] = 1
-for key,value in candidate_vote_count.items():
-        print(key,("{:.2f}".format((value/votes_count)*100)), value)
+# For each entry in the count of votes dictionary, print the key value pair (candidate name, count of votes)
+# for key,value in candidate_vote_count.items():
+        # Format output to show candidate, percentage of votes and count of votes for that candidate
+                # print(key,("{:.3f}".format((value/votes_count)*100)), value) # Includes calculation for percentage of votes
         
-        #print("{:.2f}".format((value/votes_count)*100))
+                # #Check if fomatting works for percentage
+                # print("{:.3f}".format((value/votes_count)*100))
+                
+#----------------------------------------------------------------------------------
+# Determine the winner of the election based on popular vote
 
-# Create variables to hold number of votes for each candidate
-# votes_khan = 0
-# votes_correy = 0
-# votes_li = 0
-# votes_otooley = 0
+# Create variable to hold winner vote count
+winner_vote_count = max(candidate_vote_count.values())
+# print(winner_vote_count)
 
-# for x in candidates_list:
-#     if candidates_list[x] == "Khan":
-#         votes_khan + 1 
+# Loop through each key value pair in the candidate vote count dictionary to find the winner
+for (key,value) in candidate_vote_count.items():
+    if value == winner_vote_count:
+        # Print winner name
+        # print(key)
 
-# print(votes_khan)
+        # Create variable for winner name    
+        winner_name = key 
 
+# Check winner name
+# print(winner_name)
 
+#----------------------------------------------------------------------------------
+# Print analysis to the terminal
+print("Election Results")
+print("----------------------------")
+print(f"Total Votes: {str(votes_count)}")
+print("----------------------------")
+for key,value in candidate_vote_count.items():
+    print(key,(": {:.3f}".format((value/votes_count)*100)),"% (",value,")")
 
+print("----------------------------")
+print(f"Winner: {str(winner_name)}")
+print("----------------------------")
 
-# Determine the winner of the election based on popular vote (i.e. greatest percentage)
+#----------------------------------------------------------------------------------
+# Export analysis to text file
+with open("Analysis/analysis.txt","w+") as f:
+    print("Election Results", file=f)
+    print("----------------------------", file=f)
+    print(f"Total Votes: {str(votes_count)}", file=f)
+    print("----------------------------", file=f)
+    for key,value in candidate_vote_count.items():
+        print(key,(": {:.3f}".format((value/votes_count)*100)),"% (",value,")", file=f)
+    print("----------------------------", file=f)
+    print(f"Winner: {str(winner_name)}", file=f)
+    print("----------------------------", file=f)
+    f.close
